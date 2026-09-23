@@ -1,6 +1,6 @@
 cask "jayson" do
-  version "0.1.0"
-  sha256 "b58fcdc1324f5a2fd775e0f15303d097ad854e9ee5a63bab99909f4ac2b943ef"
+  version "0.2.0"
+  sha256 "22be85507f9a0a55fa7b8789d084cc32d09392dfef034be45b28720a10d5aab6"
 
   url "https://github.com/axel-eck/jayson/releases/download/v#{version}/Jayson-#{version}.zip"
   name "Jayson"
@@ -16,13 +16,17 @@ cask "jayson" do
 
   app "Jayson.app"
 
-  # Not notarized: drop the quarantine flag so the app opens without a right-click > Open.
-  postflight_steps do
-    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Jayson.app"]
-  end
-
   zap trash: [
     "~/Library/Preferences/com.luccasoftware.Jayson.plist",
     "~/Library/Saved Application State/com.luccasoftware.Jayson.savedState",
   ]
+
+  caveats <<~EOS
+    Jayson is not notarized with an Apple Developer ID yet, so Gatekeeper will
+    refuse to open it the first time. Either remove the quarantine flag:
+
+      xattr -dr com.apple.quarantine "#{appdir}/Jayson.app"
+
+    or right-click Jayson.app in #{appdir} and choose Open once.
+  EOS
 end
