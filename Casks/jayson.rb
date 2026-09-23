@@ -1,6 +1,6 @@
 cask "jayson" do
-  version "0.2.0"
-  sha256 "22be85507f9a0a55fa7b8789d084cc32d09392dfef034be45b28720a10d5aab6"
+  version "0.3.0"
+  sha256 "21319f1b10053607427a898314538456952ee6a90f1d73a34a29868000c33dba"
 
   url "https://github.com/axel-eck/jayson/releases/download/v#{version}/Jayson-#{version}.zip"
   name "Jayson"
@@ -22,7 +22,7 @@ cask "jayson" do
   end
 
   zap trash: [
-    "~/Library/Preferences/com.luccasoftware.Jayson.plist",
-    "~/Library/Saved Application State/com.luccasoftware.Jayson.savedState",
+    "~/Library/Preferences/fr.axel-eck.Jayson.plist",
+    "~/Library/Saved Application State/fr.axel-eck.Jayson.savedState",
   ]
 end
