@@ -16,17 +16,13 @@ cask "jayson" do
 
   app "Jayson.app"
 
+  # Not notarized: drop the quarantine flag so the app opens without a right-click > Open.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Jayson.app"]
+  end
+
   zap trash: [
     "~/Library/Preferences/com.luccasoftware.Jayson.plist",
     "~/Library/Saved Application State/com.luccasoftware.Jayson.savedState",
   ]
-
-  caveats <<~EOS
-    Jayson is not notarized with an Apple Developer ID yet, so Gatekeeper will
-    refuse to open it the first time. Either remove the quarantine flag:
-
-      xattr -dr com.apple.quarantine "#{appdir}/Jayson.app"
-
-    or right-click Jayson.app in #{appdir} and choose Open once.
-  EOS
 end
