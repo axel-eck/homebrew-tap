@@ -1,8 +1,8 @@
 class Berth < Formula
   desc "SSH client for the terminal, built on nothing but ~/.ssh/config"
   homepage "https://github.com/axel-eck/berth"
-  url "https://github.com/axel-eck/berth/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "14fab559bd8b862d49255d0d199cbe1c992b6cbe2c3441498e4bca8bd01fff7e"
+  url "https://github.com/axel-eck/berth/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "b4e7f0447c0ba0ceda3786e18feb90bbe3b8101ddde5baebf890c6f37f3ce8df"
   license "MIT"
   head "https://github.com/axel-eck/berth.git", branch: "main"
 
